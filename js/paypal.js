@@ -11,18 +11,18 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         if(e.target.value == 'ctcl_paypal' &&  e.target.checked == true){
 
-            submitButton.style.display = 'none';
+            submitButton.disabled = true;
 
             let sucessCont = document.querySelector('#paypal-payment-sucess');
 
             if(sucessCont != null){
-                submitButton.style.display = ''; 
+                submitButton.disabled = false; 
             }
 
 
         }else{
 
-            submitButton.style.display = '';
+            submitButton.disabled = false;
 
         }
         
@@ -49,8 +49,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 
                 document.querySelector('#paypal-button-container').innerHTML = '<p  id="paypal-payment-sucess"  >Paypal Payment Sucessful.</p>';
 
+                submitButton.disabled = false;
                 submitButton.click();
-                submitButton.style.display = '';
+               
             });
 
 
