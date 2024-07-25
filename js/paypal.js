@@ -60,7 +60,15 @@ document.addEventListener('DOMContentLoaded',()=>{
         onError: function(err) {
             console.error(err);
             document.querySelector('#ctcl-paypal-error').style.dispay = 'block'; 
-        }
+        },
+        style: {
+            layout: 'vertical',  // horizontal | vertical
+            color: 'blue',       // gold | blue | silver | black
+            shape: 'rect',       // pill | rect
+            label: 'pay',   // checkout | pay | buynow | paypal | installment
+            tagline: false,       // true | false,
+            height :40,
+        },
     }).render('#paypal-button-container');
 
 

@@ -57,6 +57,7 @@ public function paypalDeactivate(){
 
    delete_option('ctcl_activate_paypal');
    delete_option('ctcl_paypal_client-id');
+   delete_option('ctcl_paypal_enlable_card');
 }
 
 
@@ -67,6 +68,7 @@ public function registerOptions(){
 
     register_setting($this->settingFields,'ctcl_activate_paypal');
     register_setting($this->settingFields,'ctcl_paypal_client-id');
+    register_setting($this->settingFields,'ctcl_paypal_enlable_card');
     
 
 }
@@ -100,7 +102,14 @@ public function requiredWpAction(){
 
   public function enequeFrontendJs(){
     if('1'== get_option('ctcl_activate_paypal')):
-        wp_enqueue_script('ctclPaypal','https://www.paypal.com/sdk/js?client-id='.get_option("ctcl_paypal_client-id").'&currency='.get_option('ctcl_currency'), '', null);
+
+       if( '1' == get_option('ctcl_paypal_enlable_card') ):
+        $paypalScript =  'https://www.paypal.com/sdk/js?client-id='.get_option("ctcl_paypal_client-id").'&currency='.get_option('ctcl_currency');
+       else:
+        $paypalScript =  'https://www.paypal.com/sdk/js?client-id='.get_option("ctcl_paypal_client-id").'&currency='.get_option('ctcl_currency').'&disable-funding=card';
+
+       endif;
+        wp_enqueue_script('ctclPaypal',$paypalScript, '', null);
          wp_enqueue_script('ctclPaypalJs', "{$this->paypalFilePath}js/paypal.js",array('ctclPaypal'));
     endif;    
 }
@@ -115,6 +124,7 @@ public function requiredWpAction(){
 
         add_filter('ctcl_admin_billings_html',function($val){
             $activate =  '1'=== get_option('ctcl_activate_paypal')? 'checked':'';
+            $cardPayment = '1'=== get_option('ctcl_paypal_enlable_card')? 'checked':'';
             $clientId = !empty(get_option('ctcl_paypal_client-id'))? get_option('ctcl_paypal_client-id'):'';
 ;
 
@@ -122,7 +132,9 @@ public function requiredWpAction(){
             $html .=  '<div class="ctcl-business-setting-row"><label for"ctcl-activate-paypal"  class="ctcl-activate-paypal-label">'.__('Activate Paypal :','ctcl-paypal').'</label>';
             $html .= "<span><input id='ctcl-activate-paypal' {$activate} type='checkbox' name='ctcl_activate_paypal' value='1'></span></div>";
 
-           
+            $html .=  '<div class="ctcl-business-setting-row"><label for"ctcl-paypal-enable-card"  class="ctcl-paypal-enable-card-label">'.__('Enable card payment :','ctcl-paypal').'</label>';
+            $html .= "<span><input id='ctcl-paypal-enable-card' {$cardPayment} type='checkbox' name='ctcl_paypal_enlable_card' value='1'></span></div>";
+
 
             $html .=  '<div class="ctcl-business-setting-row"><label for"ctc-paypal-client-id"  class="ctc-paypal-client-id-label">'.__('Client Id : ','ctcl-paypal').'</label>';
             $html .= "<span><input id='ctc-paypal-client-id' type='text' name='ctcl_paypal_client-id' value='{$clientId}'></span></div>";
@@ -146,7 +158,7 @@ public function requiredWpAction(){
       * html for frontend
       */
       public function frontendHtml(){
-      return '<div id="paypal-button-container"></div> <br/><i style="color:red;display:none;" id="ctcl-paypal-error">'.__('An error occurred during the payment process').'</i>';
+      return '<div id="paypal-button-container" style="width:400px;margin-left:auto;margin-right:auto;display:block;"></div> <br/><i style="color:red;display:none;" id="ctcl-paypal-error">'.__('An error occurred during the payment process').'</i>';
       }
 
     }
