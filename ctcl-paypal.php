@@ -111,6 +111,7 @@ public function requiredWpAction(){
        endif;
         wp_enqueue_script('ctclPaypal',$paypalScript, '', null);
          wp_enqueue_script('ctclPaypalJs', "{$this->paypalFilePath}js/paypal.js",array('ctclPaypal'));
+         wp_localize_script('ctclPaypalJs','ctclPaypalObject', array('paymentSuccess'=>__('Paypal Payment Sucessful','ctcl-paypal')));
     endif;    
 }
 
@@ -175,7 +176,7 @@ add_thickbox();
  */
  add_action( 'admin_notices', function(){
      echo '<div class="notice notice-error is-dismissible"><p>';
-     esc_html_e( 'CTCL Paypalplugin requires CTC Lite plugin installed and activated to work, please do so first.', 'ctcl-paypal' );
+     esc_html_e( 'CTCL Paypal plugin requires CTC Lite plugin installed and activated to work, please do so first.', 'ctcl-paypal' );
       echo esc_html('<a href="'.admin_url('plugin-install.php').'?tab=plugin-information&plugin=ctc-lite&TB_iframe=true&width=640&height=500" class="thickbox">'.__('Click Here to install it','ctcl-paypal')).' </a>'; 
      echo '</p></div>';
  } );

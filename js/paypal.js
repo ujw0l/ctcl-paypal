@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded',()=>{
             let sucessCont = document.querySelector('#paypal-payment-sucess');
 
             if(sucessCont != null){
+
+
+              
+
                 submitButton.disabled = false; 
             }
 
@@ -47,11 +51,26 @@ document.addEventListener('DOMContentLoaded',()=>{
             return actions.order.capture().then(function(details) {
 
 
-                document.querySelector('#paypal-button-container').innerHTML = '<p  id="paypal-payment-sucess"  >Paypal Payment Sucessful.</p>';
+                document.querySelector('#paypal-button-container').innerHTML = '<p  id="paypal-payment-sucess"  >'+ctclPaypalObject.paymentSuccess+'</p>';
 
                 submitButton.disabled = false;
+             
+
+                Array.from(document.querySelectorAll('input[name="shipping_option"]')).map(x=>{
+
+
+
+                    
+
+                    if(x.checked == true){
+                        x.disabled = false;
+                    }else{
+                        x.disabled = true;
+                    }
+
+                })
+
                 submitButton.click();
-               
             });
 
 
