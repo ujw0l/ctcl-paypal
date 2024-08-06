@@ -3,7 +3,7 @@
  Plugin Name:CTCL Paypal
  Plugin URI : 
  Description: CT commerce lite paypal payments addon
- Version: 1.0.0
+ Version: 1.1.0
  Author: Ujwol Bastakoti
  Author URI:https://ujw0l.github.io/
  Text Domain:  ctcl-paypal
@@ -57,6 +57,7 @@ public function paypalDeactivate(){
 
    delete_option('ctcl_activate_paypal');
    delete_option('ctcl_paypal_client-id');
+   delete_option('ctcl_paypal_color_option');
    delete_option('ctcl_paypal_enlable_card');
 }
 
@@ -68,6 +69,7 @@ public function registerOptions(){
 
     register_setting($this->settingFields,'ctcl_activate_paypal');
     register_setting($this->settingFields,'ctcl_paypal_client-id');
+    register_setting($this->settingFields,'ctcl_paypal_color_option');
     register_setting($this->settingFields,'ctcl_paypal_enlable_card');
     
 
@@ -111,7 +113,10 @@ public function requiredWpAction(){
        endif;
         wp_enqueue_script('ctclPaypal',$paypalScript, '', null);
          wp_enqueue_script('ctclPaypalJs', "{$this->paypalFilePath}js/paypal.js",array('ctclPaypal'));
-         wp_localize_script('ctclPaypalJs','ctclPaypalObject', array('paymentSuccess'=>__('Paypal Payment Sucessful','ctcl-paypal')));
+         wp_localize_script('ctclPaypalJs','ctclPaypalObject', array(
+            'paymentSuccess'=>__('Paypal Payment Sucessful','ctcl-paypal'),
+            'buttonColor'=>get_option('ctcl_paypal_color_option'),
+        ));
     endif;    
 }
 
@@ -127,7 +132,27 @@ public function requiredWpAction(){
             $activate =  '1'=== get_option('ctcl_activate_paypal')? 'checked':'';
             $cardPayment = '1'=== get_option('ctcl_paypal_enlable_card')? 'checked':'';
             $clientId = !empty(get_option('ctcl_paypal_client-id'))? get_option('ctcl_paypal_client-id'):'';
-;
+            $gold ='';$blue='';$silver='';$white ='';$black = '';
+
+            switch(get_option('ctcl_paypal_color_option')):
+                case 'gold':
+                  $gold = 'selected'; 
+                 break;   
+                case 'blue':
+                    $blue = 'selected'; 
+                    break;
+                    
+                case 'silver':
+                    $silver  = 'selected';
+                    break;
+                case 'white':
+                    $white  = 'selected';
+                    break; 
+                case 'black':
+                       $black = 'selected';
+                    break;   
+                  endswitch;
+
 
             $html = '<div class="ctcl-content-display ctcl-stripe-settings">';
             $html .=  '<div class="ctcl-business-setting-row"><label for"ctcl-activate-paypal"  class="ctcl-activate-paypal-label">'.__('Activate Paypal :','ctcl-paypal').'</label>';
@@ -136,11 +161,22 @@ public function requiredWpAction(){
             $html .=  '<div class="ctcl-business-setting-row"><label for"ctcl-paypal-enable-card"  class="ctcl-paypal-enable-card-label">'.__('Enable card payment :','ctcl-paypal').'</label>';
             $html .= "<span><input id='ctcl-paypal-enable-card' {$cardPayment} type='checkbox' name='ctcl_paypal_enlable_card' value='1'></span></div>";
 
-
             $html .=  '<div class="ctcl-business-setting-row"><label for"ctc-paypal-client-id"  class="ctc-paypal-client-id-label">'.__('Client Id : ','ctcl-paypal').'</label>';
             $html .= "<span><input id='ctc-paypal-client-id' type='text' name='ctcl_paypal_client-id' value='{$clientId}'></span></div>";
                     
 
+
+
+            $html .=  '<div class="ctcl-business-setting-row"><label for"ctcl-paypal-color-option"  class="ctcl-paypal-color-option-label">'.__('Button Color Option :','ctcl-paypal').'</label>';
+            $html .= "<span><select   name='ctcl_paypal_color_option' > "; 
+            $html .="<option value='gold' {$gold} >Gold</option>";
+            $html .="<option value='blue' {$blue} >Blue</option>";
+            $html .="<option value='silver' {$silver} >Silver</option>";
+            $html .="<option value='white' {$white} >White</option>";
+            $html .="<option value='black' {$black} >Black</option>";
+            $html .= "</select> </span></div>";
+
+      
             $html .= '</div>';
             array_push($val,array(
                                     'settingFields'=>$this->settingFields,

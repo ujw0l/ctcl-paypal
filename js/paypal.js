@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         },
         style: {
             layout: 'vertical',  // horizontal | vertical
-            color: 'blue',       // gold | blue | silver | black
+            color: ctclPaypalObject.buttonColor,       // gold | blue | silver | black
             shape: 'rect',       // pill | rect
             label: 'pay',   // checkout | pay | buynow | paypal | installment
             tagline: false,       // true | false,
