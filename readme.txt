@@ -11,6 +11,16 @@ Paypal addon for CT Commerce Lite Ecommerce plugin
 == Description ==
 
 Accept Paypal Payment with CT Commerce Lite ecommerce platform.
+
+= To get your PayPal Client ID, follow these steps: =
+
+	1.	Log in to your PayPal Developer account at developer.paypal.com.
+	2.	Go to the Dashboard.
+	3.	Under My Apps & Credentials, click on Create App.
+	4.	Name your app and select a sandbox or live environment.
+	5.	After creating the app, you will see your Client ID and Client Secret.
+
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
