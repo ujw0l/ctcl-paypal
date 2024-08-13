@@ -154,7 +154,8 @@ public function requiredWpAction(){
                   endswitch;
 
 
-            $html = '<div class="ctcl-content-display ctcl-stripe-settings">';
+            $html = '<div class="ctcl-content-display ctcl-paypal-settings">';
+            $html .= '<div class="ctcl-business-setting-row" ><label>'.__('Paypal Credentials : ','ctcl-paypal').'</label><span> <a href="https://developer.paypal.com" target="_blank">'.__('Get it here','ctcl-paypal').'</a></span></div>';
             $html .=  '<div class="ctcl-business-setting-row"><label for"ctcl-activate-paypal"  class="ctcl-activate-paypal-label">'.__('Activate Paypal :','ctcl-paypal').'</label>';
             $html .= "<span><input id='ctcl-activate-paypal' {$activate} type='checkbox' name='ctcl_activate_paypal' value='1'></span></div>";
 
