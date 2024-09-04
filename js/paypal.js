@@ -1,7 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded',()=>{
-
+if(null != document.querySelector('#paypal-button-container')){
     let submitButton = document.querySelector('.ctcl-checkout-button'); 
     
 
@@ -92,6 +92,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
-
+}
 
 })
