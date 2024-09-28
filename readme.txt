@@ -21,6 +21,11 @@ Accept Paypal Payment with CT Commerce Lite ecommerce platform.
 	5.	After creating the app, you will see your Client ID and Client Secret.
 
 
+= Integrations =
+
+* Addon uses Paypal script to load paypal functionalities from  https://www.paypal.com/sdk/js
+
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.

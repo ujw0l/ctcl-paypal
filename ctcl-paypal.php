@@ -196,7 +196,7 @@ public function requiredWpAction(){
       * html for frontend
       */
       public function frontendHtml(){
-      return '<div id="paypal-button-container" style="width:400px;margin-left:auto;margin-right:auto;display:block;padding-top:30px;"></div> <br/><i style="color:red;display:none;" id="ctcl-paypal-error">'.__('An error occurred during the payment process').'</i>';
+      return '<div id="paypal-button-container" style="width:400px;margin-left:auto;margin-right:auto;display:block;padding-top:30px;"></div> <br/><i style="color:red;display:none;" id="ctcl-paypal-error">'.__('An error occurred during the payment process','ctcl-paypal').'</i>';
       }
 
     }
