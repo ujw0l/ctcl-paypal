@@ -1,6 +1,6 @@
 <?php
 /*
- Plugin Name:Paypal for CT Commerce Lite
+ Plugin Name:CT Commerce Lite Paypal 
  Plugin URI : 
  Description: CT commerce lite paypal payments addon
  Version: 1.1.0
