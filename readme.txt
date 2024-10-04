@@ -1,4 +1,4 @@
-=== Paypal for CT Commerce Lite ===
+=== CT Commerce Lite Paypal  ===
 Contributors: UjW0L
 Tags: paypal, ctc-lite
 Requires at least: 5.5.2
