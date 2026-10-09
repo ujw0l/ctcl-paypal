@@ -2,7 +2,7 @@
 Contributors: UjW0L
 Tags: paypal, ctc-lite
 Requires at least: 5.5.2
-Tested up to: 6.6
+Tested up to: 7.1.3
 Requires PHP: 7.4.9
 Stable tag: 1.2.0
 License: GPLv2 or later

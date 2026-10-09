@@ -20,7 +20,7 @@ node --check js/paypal.js
 node tests/checkout.test.cjs
 ```
 
-The checkout tests use an SDK stub and never charge an account. They cover selection, unpaid submission, SDK load/render errors, invalid fields and totals, cancellation, completed/pending captures, and capture failure. Browser checks also exercise WordPress settings saves and real PayPal button rendering at desktop and mobile sizes.
+The checkout tests use an SDK stub and never charge an account. They cover selection, unpaid submission, SDK load/render errors, invalid fields and totals, cancellation, completed/pending captures, and capture failure. Local browser checks on WordPress 7.1.3 also exercise WordPress settings saves and real PayPal button rendering at desktop and mobile sizes.
 
 ## Payment verification limitation
 
