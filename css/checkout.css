@@ -1,0 +1,17 @@
+.ctcl-pp-checkout { box-sizing: border-box; width: 100%; max-width: 440px; margin: 20px auto; padding: 24px; border: 1px solid #dce6f1; border-radius: 14px; background: linear-gradient(155deg, #f4f8fd, #fff 65%); box-shadow: 0 5px 18px #153b6306; color: #1c3350; text-align: left; }
+.ctcl-pp-checkout * { box-sizing: border-box; }
+.ctcl-pp-checkout-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 22px; }
+.ctcl-pp-checkout-icon { flex: 0 0 36px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: #e6f1ff; font-size: 26px; font-style: italic; font-weight: 800; color: #0070ba; }
+.ctcl-pp-checkout .ctcl-pp-checkout-header h3 { color: #193553; font-family: inherit; font-size: 16px; font-weight: 650; margin: 0 0 5px; line-height: 1.4; }
+.ctcl-pp-checkout .ctcl-pp-checkout-header p { color: #63768d; font-size: 12px; line-height: 1.7; margin: 0; }
+.ctcl-pp-checkout #paypal-button-container { width: 100%; min-height: 48px; }
+.ctcl-pp-checkout .ctcl-pp-checkout-status { margin: 12px 0; color: #536b87; font-size: 12px; line-height: 1.6; }
+.ctcl-pp-checkout .ctcl-pp-checkout-status:empty { display: none; }
+.ctcl-pp-checkout #ctcl-paypal-error { margin: 12px 0; padding: 12px 14px; border: 1px solid #f2d1d1; border-radius: 8px; background: #fff5f5; color: #963434; font-size: 12px; line-height: 1.7; }
+.ctcl-pp-checkout [hidden] { display: none !important; }
+.ctcl-pp-checkout-footer { display: flex; align-items: center; justify-content: center; gap: 6px; border-top: 1px solid #e8edf4; padding-top: 15px; margin-top: 18px; color: #76879a; font-size: 10px; line-height: 1.5; }
+.ctcl-pp-checkout.is-paid { border-color: #b8dacb; background: #f5fbf8; }
+.ctcl-pp-checkout.is-paid .ctcl-pp-checkout-status { color: #227350; }
+@media (max-width: 480px) { .ctcl-pp-checkout { padding: 20px 16px; margin: 16px auto; } }
+/* The add-on card provides its own spacing inside the host payment container. */
+#ctcl_paypal_container:has(.ctcl-pp-checkout) { padding: 0; border: 0; background: transparent; }
