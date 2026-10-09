@@ -38,8 +38,9 @@ e.g.
 4. Fill the applicable fields
 
 == Screenshots ==
-1. Admin Panel 
-2. Frontend display 
+1. PayPal settings with account setup, checkout controls, and a live button appearance preview.
+2. Desktop checkout with PayPal and debit or credit card payment options.
+3. Responsive PayPal checkout on a mobile screen.
 
 == Changelog ==
 

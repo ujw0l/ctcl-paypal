@@ -27,3 +27,14 @@ The checkout tests use an SDK stub and never charge an account. They cover selec
 The original integration creates and captures PayPal orders through the browser SDK and inherits `ctclBillings::processPayment()`, which treats a submitted order as successful. This update retains that architecture. A direct submission can bypass browser controls; the browser-supplied total and capture cannot be trusted as proof of payment on the server.
 
 Before production use, implement server-side order creation/capture or verification using PayPal server credentials, authoritative CT Commerce Lite totals, currency/merchant checks, and replay protection linking each capture to one store order. The interface status means that the local option is enabled; it does not verify credentials or payment readiness. Live and sandbox payment transactions have not been executed as part of this interface update.
+
+## WordPress.org directory assets
+
+The `assets/` directory contains the current screenshots and plugin icons. Screenshot numbering matches the `Screenshots` section of `readme.txt`. For a WordPress.org SVN release, copy these files to the top-level SVN `assets/` directory alongside `trunk/` and `tags/`, rather than to `trunk/assets/`. The GitHub push does not publish the WordPress.org listing.
+
+- `screenshot-1.png`: PayPal settings and appearance preview.
+- `screenshot-2.png`: desktop PayPal checkout.
+- `screenshot-3.png`: mobile PayPal checkout.
+- `icon-128x128.png` and `icon-256x256.png`: standard and high-resolution directory icons.
+
+See the [WordPress.org asset requirements](https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/).
