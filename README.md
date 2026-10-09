@@ -7,6 +7,7 @@ PayPal payment add-on for CT Commerce Lite. Version 1.2.0 updates the settings a
 - Navy PayPal settings header, saved configuration status, account setup guidance, accessible switches, and store currency information.
 - Button color preview and unsaved change feedback. The preview is illustrative; the real SDK determines funding availability.
 - Responsive payment card, working loading/error/cancellation states, and form validation before PayPal opens.
+- PayPal orders request `NO_SHIPPING` in `payment_source.paypal.experience_context`, so CT Commerce Lite remains responsible for delivery address collection. PayPal may still require billing details for card payments. See [PayPal shipping preferences](https://developer.paypal.com/serversdk/php/models/enumerations/experience-context-shipping-preference).
 - Initial payment selection handling and automatic CT Commerce Lite order submission after a completed capture.
 - Sanitized options, escaped output, load order compatibility, translated interface strings, and configuration preservation on deactivation.
 

@@ -44,6 +44,8 @@
                     status.textContent = config.processing;
                     sync();
                     return actions.order.create({
+                        // CT Commerce Lite already collects the delivery address.
+                        payment_source: { paypal: { experience_context: { shipping_preference: 'NO_SHIPPING' } } },
                         purchase_units: [{ amount: { value: document.querySelector('#ctcl-subtotal-hidden-input').value } }]
                     });
                 },

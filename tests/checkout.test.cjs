@@ -50,7 +50,7 @@ async function run() {
     await new Promise(resolve => setImmediate(resolve));
     assert.equal(failed.error.textContent, 'Load error');
     const cancelled = setup();
-    await cancelled.callbacks.createOrder({}, {order: {create: data => { assert.equal(data.purchase_units[0].amount.value, '115.00'); return Promise.resolve('test-order'); }}});
+    await cancelled.callbacks.createOrder({}, {order: {create: data => { assert.equal(data.purchase_units[0].amount.value, '115.00'); assert.equal(data.payment_source.paypal.experience_context.shipping_preference, 'NO_SHIPPING', 'PayPal must not collect a duplicate shipping address'); return Promise.resolve('test-order'); }}});
     cancelled.callbacks.onCancel();
     assert.equal(cancelled.status.textContent, 'Cancelled'); assert.equal(cancelled.submit.disabled, true);
     const success = setup();
@@ -63,6 +63,6 @@ async function run() {
     const failedCapture = setup();
     await failedCapture.callbacks.onApprove({}, {order: {capture: () => Promise.reject(new Error('Capture failed'))}});
     assert.equal(failedCapture.submit.clicks, 0); assert.equal(failedCapture.error.textContent, 'Payment error');
-    console.log('Passed: payment selection, submission guard, SDK failures, form validation, invalid totals, cancellation, completed capture, pending capture, and capture failures.');
+    console.log('Passed: payment selection, submission guard, SDK failures, form validation, invalid totals, no duplicate shipping address, cancellation, completed capture, pending capture, and capture failures.');
 }
 run().catch(error => { console.error(error); process.exitCode = 1; });

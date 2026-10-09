@@ -45,6 +45,7 @@ e.g.
 
 = 1.2.0 =
 * Redesigned PayPal settings with account guidance, accessible switches, status, and a live appearance preview.
+* Skip duplicate shipping address collection in PayPal; use the address collected by CT Commerce Lite.
 * Added a responsive checkout card, loading, cancellation, and payment error messages.
 * Fixed missing error display and blocked unpaid submission when PayPal is already selected.
 * Validate checkout fields and totals before opening PayPal; submit only after a completed capture.
